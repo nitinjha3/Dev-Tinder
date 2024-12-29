@@ -5,10 +5,13 @@ const app=express()
 
 app.listen(3000,()=>{
     console.log("listing to PORT 3000!");
-    
 })
 
-app.use((req,res)=>{
-    res.send("hello from server");
+app.use("/",(req,res)=>{
+    res.send("hello from server"); 
+})
+
+app.use("/test",(req,res)=>{
+    res.send("hello from test server");
     
 })
