@@ -8,6 +8,11 @@ app.listen(3000,()=>{
 })
 
 app.use("/user",(req,res,next)=>{
+    res.send("Middleware 1!!")
+    next()
+})
+
+app.get("/user/test",(req,res,next)=>{
     console.log("Handling the route user !!");
     res.send("Response 1");
     next();
