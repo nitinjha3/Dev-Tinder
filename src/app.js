@@ -7,11 +7,12 @@ app.listen(3000,()=>{
     console.log("listing to PORT 3000!");
 })
 
-app.use("/",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("hello from server"); 
 })
 
-app.use("/test",(req,res)=>{
+app.get("/test/:id/:password",(req,res)=>{
+    console.log(req.params);
     res.send("hello from test server");
-    
 })
+
