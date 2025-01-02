@@ -7,31 +7,28 @@ app.listen(3000,()=>{
     console.log("listing to PORT 3000!");
 })
 
+//checking for authorization using middleware
+
 app.use("/user",(req,res,next)=>{
-    res.send("Middleware 1!!")
-    next()
+    console.log("checking authorization");
+    
+    const token="xyza";
+    const isAuthorized=token==="xyza"
+
+    if(!isAuthorized){
+        res.status(401).send("Unauthorized request!!")
+    }
+    else{
+        next();
+    }
 })
 
-app.get("/user/test",(req,res,next)=>{
-    console.log("Handling the route user !!");
-    res.send("Response 1");
-    next();
-},
-(req,res)=>{
-    console.log("Handling the route user 2!!");
-    res.send("2nd Response!!");
-}
-);
-
-
-
-app.get("/",(req,res)=>{
-    res.send("hello from server"); 
+app.get("/user/getAllData",(req,res)=>{
+    res.send("All data sent");
 })
 
-app.get("/test/:id/:password",(req,res)=>{
-    console.log(req.params);
-    res.send("hello from test server");
+app.get("/user/DeleteUser",(req,res)=>{
+    res.send("deleted the user");
 })
 
 
